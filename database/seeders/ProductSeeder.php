@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class ProductSeeder extends Seeder
 {
@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Sản phẩm '.$i,
                 'price' => rand(1000, 10000),
                 'quantity' => rand(10, 100),
-                'image' => null,
+                'image' => Faker::create()->imageUrl(640, 480, 'products', true),
                 'category_id' => rand(1,10),
                 'status' => 1
             ];

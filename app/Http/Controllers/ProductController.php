@@ -55,19 +55,35 @@ class ProductController extends Controller
         //
         $validate = $request->validate(
             [
-               'name'=> ['required', 'string', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
                 'price' => ['required', 'integer', 'min:1'],
                 'quantity' => ['required', 'integer', 'min:1'],
                 'image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
                 'category_id' => ['required', 'exists:categories,id']
             ],
             [
-              'name.required'=>'Trường tên không được bỏ trống',
-              'name.string'=>'Tên bắt buộc là chuỗi',
-              'name.max'=>'Trường tên không được vượt quá 255 ký tự',
-                // Lab 6
+                'name.required' => 'Trường tên không được bỏ trống',
+                'name.string' => 'Tên bắt buộc là chuỗi',
+                'name.max' => 'Trường tên không được vượt quá 255 ký tự',
+                
+                'price.required' => 'Trường giá không được bỏ trống',
+                'price.integer' => 'Giá phải là số nguyên',
+                'price.min' => 'Giá phải lớn hơn hoặc bằng 1',
+                
+                'quantity.required' => 'Trường số lượng không được bỏ trống',
+                'quantity.integer' => 'Số lượng phải là số nguyên',
+                'quantity.min' => 'Số lượng phải lớn hơn hoặc bằng 1',
+                
+                'image.required' => 'Trường hình ảnh không được bỏ trống',
+                'image.image' => 'Trường hình ảnh phải là một tệp hình ảnh',
+                'image.mimes' => 'Hình ảnh phải có định dạng jpg, jpeg hoặc png',
+                'image.max' => 'Hình ảnh không được vượt quá 2048 kilobytes',
+                
+                'category_id.required' => 'Trường danh mục không được bỏ trống',
+                'category_id.exists' => 'Danh mục không tồn tại'
             ]
         );
+        
 //        dd($request->all());
     }
 
